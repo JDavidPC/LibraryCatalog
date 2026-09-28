@@ -1,0 +1,15 @@
+@Catalog.Api_HostAddress = http://localhost:5180
+
+### Query 1 - Consultar todos los libros
+GET {{Catalog.Api_HostAddress}}/api/books?pageNumber=1&pageSize=15
+Accept: application/json
+
+### Query 2 - Consultar un libro por Id (reemplazar por un Id devuelto en la Query 1)
+GET {{Catalog.Api_HostAddress}}/api/books/00000000-0000-0000-0000-000000000000
+Accept: application/json
+
+### Query 3 - Consultar libros por categoria (reemplazar por el CategoryId de un libro de la Query 1)
+GET {{Catalog.Api_HostAddress}}/api/books/category/00000000-0000-0000-0000-000000000000?pageNumber=1&pageSize=15
+Accept: application/json
+
+###
