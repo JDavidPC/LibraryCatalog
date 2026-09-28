@@ -109,21 +109,25 @@ Errores: `NotFoundException` → `404`, `BusinessRuleException` → `400`, cualq
 
 ### 1. Configurar la cadena de conexión
 
-Editar `ConnectionStrings:MyConnection` en `Catalog.Api/appsettings.json` (por defecto usa `Server=localhost` con autenticación de Windows).
+Editar `ConnectionStrings:MyConnection` en `Catalog.Api/appsettings.json` (por defecto usa `Server=localhost\SQLEXPRESS` con autenticación de Windows).
 
-### 2. Crear la base de datos (Code First)
+### 2. Aplicar migraciones y crear la base de datos (Code First)
 
-Desde la raíz del repositorio, con el script `ef.cmd`:
+Si clonas el repositorio por primera vez, la migración inicial ya viene incluida, así que normalmente solo necesitas aplicar la base de datos:
 
 ```bash
-ef.cmd add InitialCreate    # genera la migración en Catalog.Persistence/Migrations
-ef.cmd update               # crea/actualiza la base de datos
+ef.cmd update
+```
+
+Si haces cambios al modelo y necesitas generar una migración nueva, usa:
+
+```bash
+ef.cmd add NombreMigracion
 ```
 
 O directamente con la CLI:
 
 ```bash
-dotnet ef migrations add InitialCreate --project Catalog.Persistence --startup-project Catalog.Api --output-dir Migrations
 dotnet ef database update --project Catalog.Persistence --startup-project Catalog.Api
 ```
 
@@ -136,7 +140,7 @@ dotnet run --project Catalog.Api
 Al iniciar, `DataBaseSeeder` carga datos de ejemplo (4 categorías, 7 autores, 10 libros) solo si las tablas están vacías. Las peticiones de prueba están en `Catalog.Api/Catalog.Api.http`.
 
 La especificación OpenAPI está disponible en `/openapi/v1.json` (entorno Development).
-La interfaz de SwaggerUI está en `swagger/index.html`.
+La interfaz de Swagger UI está en `/swagger` o `/swagger/index.html`.
 
 ### 4. Ejecutar las pruebas
 
