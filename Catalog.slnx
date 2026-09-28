@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="Catalog.Application/Catalog.Application.csproj" />
+    <Project Path="Catalog.Domain/Catalog.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="Catalog.Persistence/Catalog.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Presenters/">
+    <Project Path="Catalog.Api/Catalog.Api.csproj" />
+  </Folder>
+  <Folder Name="/scripts/">
+    <File Path="ef.cmd" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Catalog.Tests/Catalog.Tests.csproj" />
+  </Folder>
+</Solution>
